@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             $user = 1;
         }
         else {
-          // in no duplicate data in database, insert this valid data
+          // if no duplicate data in database, insert this valid data
             $sql = "INSERT INTO `registeration` (user_name, password)
             VALUES ('$username', '$password')";
             
@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                 $success = 1;
             }
             else {
-                die(mysqli_errno($con));
+                die(mysqli_error($con));
             }
         }
     }
@@ -59,6 +59,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 
 <?php
+
+// fire alerts box , at the top of the page, indicating the status of operations of singed up success, or failure
 
   // if user alrady in data base
 if ($user) {
@@ -94,7 +96,7 @@ if ($success) {
                 <input type="password" class="form-control" placeholder="Enter Your Password" name="password">
             </div>
 
-            <button type="submit" class="btn btn-primary w-100">Submit</button>
+            <button type="submit" class="btn btn-primary w-100">Sign Up</button>
         </form>
     </div>
 
